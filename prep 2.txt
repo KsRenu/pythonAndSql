@@ -1,0 +1,17 @@
+Python Interview Topics:
+Datatypes
+Lists, Arrays, Dictionaries and Tuples
+Slicing
+Lambda functions
+Numpy 
+Multithreading
+Decorators
+
+Dataset for reference :
+
+https://www.kaggle.com/datasets/arashnic/hr-analytics-job-change-of-data-scientists?resource=download
+
+Questions in relevance to dataset:
+
+Normal select with aggregations.
+Select from multiple tables(join)

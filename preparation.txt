@@ -1,0 +1,343 @@
+SQL Interview Topics
+
+Database
+A database is an organized collection of structured information, or data, typically stored electronically in a computer system. A database is usually controlled by a database management system (DBMS). 
+
+Data analysis
+Questions on Joins,its types
+Cross join
+Constraints - not null, unique, pk,fk, checkadn default
+
+Difference between primary key and foreign key
+ACID properties
+DDL,DML statements
+Triggers and cursors
+A cursor can be basically referred to as a pointer to the context area.Context area is a memory area that is created by Oracle when SQL statement is processed.The cursor is thus responsible for holding the rows that have been returned by a SQL statement
+A Trigger is basically a program which gets automatically executed in response to some events such as modification in the database.Some of the events for their execution are DDL statement, DML statement or any Database operation
+
+Normalisation
+Database Normalization is a stepwise formal process that allows us to decompose database tables in such a way that both data dependency and update anomalies are minimized.
+atomic->partial dependency->transitive dependecny
+Data redundancy
+Redundancy means having multiple copies of the same data in the database. This problem arises when a database is not normalized.
+data inconsistency,storage requierements, update anamolies, performance and security issue, data duplication and integrity, maintanence complexity
+
+Schema - logical representation of data
+The Skeleton of the database is created by the attributes and this skeleton is named as Schema.
+Schema is mentioning the logical constraints like table, primary key etc.
+Schema does not represent the data type of the attributes.
+
+3types of schema - physical, logical and view
+database schema designs: Flat Model, Hierarchical Model, Network Model, Relational Model, Star Schema,Snowflake Schema
+
+Deadlocks
+a deadlock occurs when two or more transactions are waiting for each other to release resources, such as locks on database objects, that they need to complete their operations. 
+DBMSs often use various techniques to detect and resolve deadlocks automatically. These techniques include timeout mechanisms, where a transaction is
+ forced to release its locks after a certain period of time, and deadlock detection algorithms, which periodically scan the transaction log 
+for deadlock cycles and then choose a transaction to abort to resolve the deadlock.
+avoidance: application-context
+prevention: Wait – Die 	Wound -Wait
+disadvanage: system downtime, resource wait, reduced concurrency, complex resolution, increased system overhead.
+features: mutual exclusion, hold and wait, no preemption, circular wait
+
+Difference between views and tables
+, a view is a “stored query “
+uses of view: Hiding data complexity, Simplify commands for the user, Restricting data access
+Store complex queries, Rename Columns, Multiple view facility
+
+
+Indexes
+Having clause
+Group by clause
+Subqueries
+Real time example for one to one relationship amd one to many relationship
+Queries using aggregate functions and operators
+
+
+
+
+
+
+
+Questions of general DBMS:
+
+Normalization
+ACID properties
+RAID(optional) - how efficiently and reliabley protecting the data
+redendent array of independent disks
+raid 0: blocks of data in disk - loss if block damage
+raid 1: mirrored disks - no fear of loss but error may if crud
+raid 2: error correction data as bits -  codes like hamming code involved, expensive and complex
+raid 3: parity checker - xor relation - loss if that disk damage
+raid 4: block data - loss if block damage
+raid 5: parity checker equally in disks - time consuming as to access individually
+raid 6: 2 parity check block per disk till raid 10
+Types of SQL commands with example for each
+Schema
+
+
+
+
+
+
+
+
+Table name : purchase_detail
+
+column_name
+datatype
+
+
+customer_ID
+varchar
+Primary key
+product_ID
+varchar
+Foreign key
+invoice_date
+date
+
+
+Amount
+double
+
+
+
+
+Table_name: product_detail
+
+column_name
+datatype
+product_id
+varchar
+product_name
+varchar
+type
+char
+
+
+
+1. Display all unique products purchased by customer_ID 101.
+
+2. Find which customer made the third lowest purchase.
+
+Select max(amount) from (Select distinct amount from purchase_detail order by asc where rownum <4) 
+
+
+
+3. Min and max amount in the same table.
+
+Select max(amount) from purchase_details
+Union
+Select min (amount) from purchase_details;
+
+
+4. Find the total amount each customer has made.
+
+Select customer_id , sum(amount) from purchase_details group by customer_id
+
+
+
+5. Display the product name and  type from each customer purchase detail.
+
+Select customer_id, customer_detail.product_id, product_name, type, invoice_date, amount from customer_detail  left outer join product_detail on custome_detail.product_id = product_detail.product_id
+
+
+
+6. Select all unique products that have names starting with A or a.
+
+Select product_name from product_detail where product_name like ‘a%’ or like ‘A%’
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE VIEW view_name AS
+SELECT column1, column2.....
+FROM table_name
+WHERE condition;
+
+
+CREATE VIEW MarksView AS
+SELECT StudentDetails.NAME, StudentDetails.ADDRESS, StudentMarks.MARKS
+FROM StudentDetails, StudentMarks
+WHERE StudentDetails.NAME = StudentMarks.NAME;
+
+
+show full tables where table_type like "%VIEW";
+
+condition to update view: no groupby, distinct,have not null,not created using nested queries, created form singlw table
+
+CREATE VIEW SampleView AS
+SELECT S_ID, NAME
+FROM  StudentDetails
+WHERE NAME IS NOT NULL
+WITH CHECK OPTION;
+
+uses of view: Hiding data complexity, Simplify commands for the user, Restricting data access
+Store complex queries, Rename Columns, Multiple view facility
+
+
+
+An index is a schema object. It is used by the server to speed up the retrieval 
+of rows by using a pointer. It can reduce disk I/O(input/output) by using a 
+rapid path access method to locate data quickly. An index helps to speed up 
+select queries and where clauses, but it slows down data input, with the 
+update and the insert statements. 
+
+CREATE INDEX index
+ ON TABLE column;
+DROP INDEX index;
+ALTER INDEX IndexName 
+ON TableName REBUILD;
+
+When should indexes be created: wide range of values, not contain a large number
+ of null values, cols frequently used together
+
+why index: full table scan which takes much time and the server usually gets timed out.,
+same index, not make an index for each query, no index of full table scan is faster than using the index.
+
+
+ Candidate Key: The minimal set of attributes that can uniquely identify a tuple is known as a candidate key.,
+It can contain NULL values.It is a super key with no repeated data is called a candidate key.
+Primary Key: There can be more than one candidate key in relation out of which one can be chosen as the primary key.
+It cannot be NULL.
+Primary keys are not necessarily to be a single column; more than one column can also be a primary key for a table.
+Super Key: The set of attributes that can uniquely identify a tuple is known as Super Key. A super key is a group of single or multiple keys that identifies rows in a table. It supports NULL values. 
+. Alternate Key: The candidate key other than the primary key is called an alternate key.
+Foreign Key: If an attribute can only take the values which are present as values of some other attribute, it will be a foreign key to the attribute to which it refers.
+Foreign Key can be NULL as well as may contain duplicate tuples i.e. it need not follow uniqueness constraint. 
+
+
+SQL | Constraints: Constraints are the rules that we can apply on the type of data in a table. 
+not null, unique, pk,fk, checkadn default (6) 
+FOREIGN KEY (C_ID) REFERENCES Customers(C_ID)
+Alter Table Person add Primary Key(Id);
+ALTER table Person DROP PRIMARY KEY;
+ALTER TABLE Emp modify Name Varchar(50) NOT NULL;
+
+
+SELECT table.ID
+FROM  table
+WHERE UNIQUE (SELECT table2.ID
+              FROM table2
+              WHERE table.ID = table2.ID);
+
+SELECT * FROM employee WHERE emp_city = 
+'Allahabad' AND emp_country = 'India';
+SELECT * FROM employee WHERE emp_id BETWEEN 101 AND 104;
+SELECT * FROM MATHS WHERE MARKS<>70;
+
+SELECT * FROM Student WHERE Age = 18 AND ADDRESS = 'Delhi';
+
+SELECT ProductName 
+FROM Products
+WHERE ProductID = ALL (SELECT ProductId
+                       FROM OrderDetails
+                       WHERE Quantity = 6 OR Quantity = 2);
+
+SELECT DISTINCT CategoryID
+FROM Products 
+WHERE ProductID = ANY (SELECT ProductID 
+                       FROM OrderDetails);
+
+SELECT * FROM Student WHERE LastName REGEXP '[A-C]';
+
+
+SELECT * FROM suppliers as s
+WHERE NOT EXISTS (( SELECT p.pid FROM parts as p )
+EXCEPT
+ (SELECT sp.pid FROM supplies sp WHERE sp.sid = s.sid ) );
+
+SELECT Name
+FROM Emp
+WHERE Salary IN (30000, 40000, 25000);
+
+SELECT fname, lname 
+FROM Customers 
+WHERE EXISTS (SELECT * 
+              FROM Orders 
+              WHERE Customers.customer_id = Orders.c_id);
+
+
+clause: where, using, distinct, limit, except, with, union
+
+SELECT e.EMPLOYEE_ID, e.LAST_NAME, d.LOCATION_ID
+FROM Employees e JOIN Departments d
+USING(DEPARTMENT_ID);
+
+SELECT *
+FROM student 
+LIMIT 3;
+
+SELECT Name
+       FROM Students
+EXCEPT
+SELECT NAME
+       FROM TA;
+
+alter table t2 change column  lname lastname varchar(50); 
+
+SELECT COUNT (item), Customer_id FROM Orders GROUP BY order_id;  
+
+
+SELECT Department, sum(Salary) as Salary
+FROM employee
+GROUP BY department
+HAVING SUM(Salary) >= 50000; 
+
+
+
+The GROUP BY Statement in SQL is used to arrange identical data into groups with the help of some functions. i.
+SELECT column1, function_name(column2)
+
+FROM table_name
+
+WHERE condition
+
+GROUP BY column1, column2
+
+HAVING condition
+
+ORDER BY column1, column2;
+
+The HAVING clause was introduced in SQL to allow the filtering of query results based on aggregate functions and groupings, which cannot be achieved using the WHERE clause that is used to filter individual rows.
+
+In SQL a Subquery can be simply defined as a query within another query. In other words we can say that a Subquery is a query that is embedded in WHERE clause of another SQL query.
+
+
+Select NAME, LOCATION, PHONE_NUMBER from DATABASE 
+WHERE ROLL_NO IN
+(SELECT ROLL_NO from STUDENT where SECTION=’A’); 
+
+
+select I.ID, I.NAME, I.DEPARTMENT, I.SALARY from
+(select avg(BUDGET) as averageBudget from DEPARTMENT) as BUDGET, Instructor as I
+where I.SALARY > BUDGET.averageBudget;
+
+
+A Subquery or Inner query or Nested query is a query within SQL query and embedded within the WHERE clause. A Subquery is a SELECT statement that is embedded in a clause of another SQL statement
+
+: A subquery is easier to write, but a joint might be better optimized by the server. 
+

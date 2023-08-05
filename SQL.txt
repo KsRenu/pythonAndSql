@@ -1,0 +1,90 @@
+1.write a ddl query to create a table with 4 fields and 1 field as PK
+ 2 not null,1 - can be null
+
+>>create table sample(id int primary key, name varchar(50) not null, age int not null, email varchar(100) unique key, address varchar(255));
+
+2.Write a command to truncate a table;
+
+>>truncate table sample;
+
+3.alter the structure - remove unique key
+>>alter table sample 
+
+4. ddl to change the dtype of age to varchar
+>> alter table sample modify column age varchar(5);
+
+5. DDl to add 2 more fields
+>> alter table sample add column occupation varchar(50), salary int;
+
+6. change col name occupation to profession
+>> alter table sample rename column occupation to profession;
+
+7.drop a table
+>>drop table sample;
+
+8.syntax to retrieve a particular field in a table
+>>select fieldname from tablename;
+
+9. select a particular field with 2 true conditions
+>> select fieldname from tablename where predicate1 and predicate2;
+
+10. dml to retrieve all the names starting with letter r
+>> select name from tablename like 'r%'; ------------concept ?
+
+11.dml to update a row with a pk=2
+>>update tablename set fieldname = value where id = 2;
+
+12.dml to find names which has renu in it. 
+>>select names from tablename where like '%renu%';
+
+13.dml to find name start with l and end with a
+>>select name from tablename where like 'l%a';
+
+14. dml syntax to find particular count of field with a true condition.
+>>select count(colname) from tablename where predicate;
+
+15.order by default value
+
+16.dml query syntax for inner join
+>>select tab1.col1,tab2.col1
+from tab1
+inner join tab2
+on tab1.col1 = tab2.col2
+
+17.syntax for left join
+>>select tab1.col1, tab2.col1
+from tab1
+left join tab2
+on tab1.col1 = tab2.col1
+
+18.d/b unique and primary
+
+19.rules of primary keys.
+
+20. no.of.possible unique, foreign key
+
+21.data redundency
+
+22.views usage ----usage
+
+23.syntax for subquery
+select colnames from tbale where colname operator (select colnames from tbale where colname operator);
+
+24. dml syntax to find values between 2----------------------------syntax
+>> select colname from tablename where colname in between(initial value, end value);
+
+25. dml to find all student b/n roll num 10 to 20 except 17
+>>select studentname ffrom student where roll between(10,20) and !=17; -------------------syntax
+
+
+
+denormalization
+cursors and usage
+d/b inner and full
+trigger definition
+delete and truncate
+auto increment technical
+having technical definition
+null or zero or blank
+sql injection - method to prevent
+duplicate removal without distinct
