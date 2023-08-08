@@ -1,14 +1,24 @@
 {"isbn": "123-456-222",  
  "author": 
-    {
-      "lastname": "Doe",
-      "firstname": "Jane"
-    },
+    [
+      {"lastname": "Doe1",
+      "firstname": "Jane5"},
+      {"lastname": "Doe2",
+      "firstname": "Jane4"},
+      {"lastname": "Doe3",
+      "firstname": "Jane3"},
+      {"lastname": "Doe4",
+      "firstname": "Jane2"},
+      {"lastname": "Doe5",
+      "firstname": "Jane1"}
+    ],
 "editor": 
     {
       "lastname": "Smith",
       "firstname": "Jane"
     },
-  "title": "The Ultimate Database Study Guide",  
+  "title": ["The Ultimate Database Study Guide1",  
+  "The Ultimate Database Study Guide2",
+  "The Ultimate Database Study Guide3"],
   "category": ["Non-Fiction", "Technology"]
  }
