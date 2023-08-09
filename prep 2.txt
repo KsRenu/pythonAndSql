@@ -15,3 +15,27 @@ Questions in relevance to dataset:
 
 Normal select with aggregations.
 Select from multiple tables(join)
+
+
+how to add elements in select
+str replace
+del/delete 
+tuple getting elementsasyncio Multithreading
+merge 2 Dictionaries
+join 2 Lists
+
+
+Numpy:
+size
+average/Multithreading
+arrange skip
+np.random.randint,size
+linspace
+identity eye
+matrix operations
+add multiply inverse
+hackerank Numpy
+combine all results and end in Multithreading
+non-linear threading concepts
+
+
