@@ -1,7 +1,9 @@
 SQL Interview Topics
 
 Database
-A database is an organized collection of structured information, or data, typically stored electronically in a computer system. A database is usually controlled by a database management system (DBMS). 
+A database is an organized collection of structured information, or data, 
+typically stored electronically in a computer system. A database is usually controlled 
+by a database management system (DBMS). 
 
 Data analysis
 Questions on Joins,its types
@@ -12,15 +14,22 @@ Difference between primary key and foreign key
 ACID properties
 DDL,DML statements
 Triggers and cursors
-A cursor can be basically referred to as a pointer to the context area.Context area is a memory area that is created by Oracle when SQL statement is processed.The cursor is thus responsible for holding the rows that have been returned by a SQL statement
-A Trigger is basically a program which gets automatically executed in response to some events such as modification in the database.Some of the events for their execution are DDL statement, DML statement or any Database operation
+A cursor can be basically referred to as a pointer to the context area.Context area is a memory area 
+that is created by Oracle when SQL statement is processed.The cursor is thus responsible for holding 
+the rows that have been returned by a SQL statement
+
+A Trigger is basically a program which gets automatically executed in response to some events such as 
+modification in the database.Some of the events for their execution are DDL statement, DML statement or any Database operation
 
 Normalisation
-Database Normalization is a stepwise formal process that allows us to decompose database tables in such a way that both data dependency and update anomalies are minimized.
+Database Normalization is a stepwise formal process that allows us to decompose database tables in such a way that
+ both data dependency and update anomalies are minimized.
 atomic->partial dependency->transitive dependecny
 Data redundancy
-Redundancy means having multiple copies of the same data in the database. This problem arises when a database is not normalized.
-data inconsistency,storage requierements, update anamolies, performance and security issue, data duplication and integrity, maintanence complexity
+Redundancy means having multiple copies of the same data in the database. This problem arises when a 
+database is not normalized.
+data inconsistency,storage requierements, update anamolies, performance and security issue, 
+data duplication and integrity, maintanence complexity
 
 Schema - logical representation of data
 The Skeleton of the database is created by the attributes and this skeleton is named as Schema.
@@ -31,9 +40,12 @@ Schema does not represent the data type of the attributes.
 database schema designs: Flat Model, Hierarchical Model, Network Model, Relational Model, Star Schema,Snowflake Schema
 
 Deadlocks
-a deadlock occurs when two or more transactions are waiting for each other to release resources, such as locks on database objects, that they need to complete their operations. 
-DBMSs often use various techniques to detect and resolve deadlocks automatically. These techniques include timeout mechanisms, where a transaction is
- forced to release its locks after a certain period of time, and deadlock detection algorithms, which periodically scan the transaction log 
+a deadlock occurs when two or more transactions are waiting for each other to release resources, 
+such as locks on database objects, that they need to complete their operations. 
+DBMSs often use various techniques to detect and resolve deadlocks automatically. These techniques 
+include timeout mechanisms, where a transaction is
+ forced to release its locks after a certain period of time, and deadlock detection algorithms, 
+ which periodically scan the transaction log 
 for deadlock cycles and then choose a transaction to abort to resolve the deadlock.
 avoidance: application-context
 prevention: Wait – Die 	Wound -Wait
@@ -322,9 +334,11 @@ HAVING condition
 
 ORDER BY column1, column2;
 
-The HAVING clause was introduced in SQL to allow the filtering of query results based on aggregate functions and groupings, which cannot be achieved using the WHERE clause that is used to filter individual rows.
+The HAVING clause was introduced in SQL to allow the filtering of query results based on aggregate functions 
+and groupings, which cannot be achieved using the WHERE clause that is used to filter individual rows.
 
-In SQL a Subquery can be simply defined as a query within another query. In other words we can say that a Subquery is a query that is embedded in WHERE clause of another SQL query.
+In SQL a Subquery can be simply defined as a query within another query. In other words we can say 
+that a Subquery is a query that is embedded in WHERE clause of another SQL query.
 
 
 Select NAME, LOCATION, PHONE_NUMBER from DATABASE 
@@ -337,7 +351,8 @@ select I.ID, I.NAME, I.DEPARTMENT, I.SALARY from
 where I.SALARY > BUDGET.averageBudget;
 
 
-A Subquery or Inner query or Nested query is a query within SQL query and embedded within the WHERE clause. A Subquery is a SELECT statement that is embedded in a clause of another SQL statement
+A Subquery or Inner query or Nested query is a query within SQL query and embedded within the WHERE clause. 
+A Subquery is a SELECT statement that is embedded in a clause of another SQL statement
 
 : A subquery is easier to write, but a joint might be better optimized by the server. 
 
