@@ -79,12 +79,47 @@ select colnames from tbale where colname operator (select colnames from tbale wh
 
 
 denormalization
+Denormalization is a database optimization technique in which we add redundant data to one or more tables. 
+This can help us avoid costly joins in a relational database. Note that denormalization does not mean
+ ‘reversing normalization’ or ‘not to normalize’. It is an optimization technique that is applied after 
+ normalization. Basically, The process of taking a normalized schema and making it non-normalized is called 
+ denormalization
+ Pros of Denormalization:
+
+Retrieving data is faster since we do fewer joins
+Queries to retrieve can be simpler(and therefore less likely to have bugs), 
+since we need to look at fewer tables.
+Cons of Denormalization:
+
+Updates and inserts are more expensive.
+Denormalization can make update and insert code harder to write.
+Data may be inconsistent.
+Data redundancy necessitates more storage.
+
+
+
 cursors and usage
+
+ A cursor in MySQL is an object that allows you to process data returned by a query row-by-row12. 
+ You can use a cursor inside a stored procedure to iterate over the result set and perform operations
+  on each row individually3. A cursor is read-only, non-scrollable and asensitive
+
+
 d/b inner and full
 trigger definition
 delete and truncate
 auto increment technical
 having technical definition
-null or zero or blank
+null or zero or blank: You can use a NULL value in the INSERT statement to specify that the data is missing. /unknown value
 sql injection - method to prevent
-duplicate removal without distinct
+SQL injection is a technique used to extract user data by injecting web page inputs as statements through SQL commands
+
+duplicate removal without distinct - union, intersect, join,group by, minus.
+SELECT
+    employee.Id,
+        employee.FullName,
+        employee.ManagerId,
+        manager.FullName as ManagerName
+FROM Employees employee
+JOIN Employees manager
+ON employee.ManagerId = manager.Id
